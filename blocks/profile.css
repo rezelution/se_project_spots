@@ -1,7 +1,7 @@
 .profile {
   display: flex;
   padding: 34px 0 20px;
-  border-bottom: 1px #66212121 solid;
+  border-bottom: 1px #21212166 solid;
 }
 
 .profile__avatar {
@@ -46,7 +46,7 @@
   width: 157px;
   height: 52px;
   border-radius: 8px;
-  color: #fff;
+  color: #fcf5e5;
   background-color: #212121;
   border: none;
   margin-top: auto;
@@ -72,7 +72,6 @@
   margin: 0 0 12px;
   font-size: 32px;
   font-weight: 500;
-  margin-bottom: 12px;
   text-overflow: ellipsis;
   overflow: hidden;
   display: -webkit-box;

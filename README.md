@@ -27,7 +27,7 @@ Spots is an interactive web page that allows the user to upload images for visit
 
 This was built using a combination of flexbox, grids, hover states and media queries to handle transitions to multiple screens.
 
-- [Link to the Spots website] (https://github.com/rezelution/se_project_spots.git)
+- [Link to the Spots website] (https://rezelution.github.io/se_project_spots/)
 
 A video is included to explain and show this in detail.
 
