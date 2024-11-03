@@ -27,6 +27,36 @@
         />
       </header>
       <main class="content">
+        <div class="modal modal__opened">
+          <div class="modal__container">
+            <button class="modal__close_button" type="submit">
+              <img src="Images/close_icon.svg" alt="close icon" />
+            </button>
+            <h2 class="modal__title">Edit Profile</h2>
+            <form class="modal__form">
+              <label for="name" class="modal__label"
+                >Name<input
+                  type="text"
+                  required
+                  class="modal__input"
+                  id="name"
+                  placeholder="Type your name"
+              /></label>
+
+              <label for="description" class="modal__label"
+                >Description<input
+                  type="text"
+                  required
+                  class="modal__input"
+                  id="description"
+                  placeholder="Describe yourself"
+              /></label>
+
+              <button type="submit" class="modal__submit_button">Save</button>
+            </form>
+          </div>
+        </div>
+
         <div class="profile page__section">
           <img
             src="./Images/avatar.jpg"
