@@ -25,4 +25,23 @@ const initialCards = [
   },
 ];
 
-console.log(initialCards);
+const profileEditButton = document.querySelector(".profile__edit-button");
+/*this is to select something and if we want something to happen when it get's clicked we need to set an event listener*/
+/*every time we need to use an element we need to select it first*/
+
+const editProfileModal = document.querySelector("#edit-profile-modal");
+/*if you give an ID to the element then all other searches will be easier*/
+
+const closeButtonModal = editProfileModal.querySelector(".modal__close_button");
+
+function openModal() {
+  editProfileModal.classList.add("modal_opened");
+}
+
+function closeModal() {
+  editProfileModal.classList.remove("modal_opened");
+}
+
+profileEditButton.addEventListener("click", openModal);
+closeButtonModal.addEventListener("click", closeModal);
+/*this looks for a click and then the function describes what happens when it clicks*/
