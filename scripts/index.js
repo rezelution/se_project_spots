@@ -86,3 +86,5 @@ for (let i = 0; i < initialCards.length; i++) {
   const cardElement = getCardElement(initialCards[i]);
   cardList.append(cardElement);
 }
+//the for loop is taking each image in array and listing one by one.
+//The append starts at the end, the prepend starts at the front
