@@ -66,7 +66,7 @@ profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 /*the code is for submit when i hit the save button*/
 
 const cardTemplate = document.querySelector("#card-template");
-const cardsList = document.querySelector(".cards");
+const cardList = document.querySelector(".cards__list");
 
 function getCardElement(data) {
   const cardElement = cardTemplate.content
@@ -84,5 +84,5 @@ function getCardElement(data) {
 
 for (let i = 0; i < initialCards.length; i++) {
   const cardElement = getCardElement(initialCards[i]);
-  cardsList.prepend(cardElement);
+  cardList.append(cardElement);
 }
