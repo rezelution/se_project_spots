@@ -64,3 +64,25 @@ function handleProfileFormSubmit(evt) {
 
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 /*the code is for submit when i hit the save button*/
+
+const cardTemplate = document.querySelector("#card-template");
+const cardsList = document.querySelector(".cards");
+
+function getCardElement(data) {
+  const cardElement = cardTemplate.content
+    .querySelector(".card")
+    .cloneNode(true);
+
+  const cardNameEl = cardElement.querySelector(".card__title");
+  const cardImageEl = cardElement.querySelector(".card__image");
+
+  cardNameEl.textContent = data.name;
+  cardImageEl.src = data.link;
+
+  return cardElement;
+}
+
+for (let i = 0; i < initialCards.length; i++) {
+  const cardElement = getCardElement(initialCards[i]);
+  cardsList.prepend(cardElement);
+}
