@@ -26,15 +26,23 @@ const initialCards = [
 ];
 
 const profileEditButton = document.querySelector(".profile__edit-button");
+const profileName = document.querySelector(".profile__name");
+const profileDescription = document.querySelector(".profile__description");
+
 /*this is to select something and if we want something to happen when it get's clicked we need to set an event listener*/
 /*every time we need to use an element we need to select it first*/
 
 const editProfileModal = document.querySelector("#edit-profile-modal");
+const closeButtonModal = editProfileModal.querySelector(".modal__close_button");
+const inputName = document.querySelector("#profile-name-input");
+const inputDescription = document.querySelector("#profile-description-input");
+const profileFormElement = document.querySelector(".modal__form");
+
 /*if you give an ID to the element then all other searches will be easier*/
 
-const closeButtonModal = editProfileModal.querySelector(".modal__close_button");
-
 function openModal() {
+  inputName.value = profileName.textContent;
+  inputDescription.value = profileDescription.textContent;
   editProfileModal.classList.add("modal_opened");
 }
 
@@ -45,3 +53,14 @@ function closeModal() {
 profileEditButton.addEventListener("click", openModal);
 closeButtonModal.addEventListener("click", closeModal);
 /*this looks for a click and then the function describes what happens when it clicks*/
+
+function handleProfileFormSubmit(evt) {
+  evt.preventDefault();
+  profileName.textContent = inputName.value;
+  profileDescription.textContent = inputDescription.value;
+  closeModal();
+}
+/*this is grabbing the inputted data and saving it to the field*/
+
+profileFormElement.addEventListener("submit", handleProfileFormSubmit);
+/*the code is for submit when i hit the save button*/
