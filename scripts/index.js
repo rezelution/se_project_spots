@@ -81,6 +81,7 @@ function getCardElement(data) {
 
   return cardElement;
 }
+//the above is grabbing from the array and filling the data into the designated template areas
 
 for (let i = 0; i < initialCards.length; i++) {
   const cardElement = getCardElement(initialCards[i]);
