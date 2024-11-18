@@ -29,10 +29,11 @@
 
 .modal__title {
   font-size: 32px;
+  line-height: 1;
   margin: 0 0 32px;
 }
 
-.modal__close_button {
+.modal__close-button {
   position: absolute;
   top: 32px;
   right: 50px;
@@ -75,7 +76,7 @@
   cursor: pointer;
 }
 
-.modal__submit_button {
+.modal__submit-button {
   width: 156px;
   padding: 18px 0;
   background-color: #000;
@@ -99,10 +100,11 @@
 
 .modal__title {
   font-size: 20px;
+  line-height: 1;
   margin: 10px 0 34px;
 }
 
-.modal__close_button {
+.modal__close-button {
   top: 12px;
   right: 12px;
 }
@@ -113,8 +115,9 @@
 
 .modal__input {
   font-size: 16px;
+  line-height: 1;
 }
 
-.modal__submit_button {
+.modal__submit-button {
   width: 276px;
 }

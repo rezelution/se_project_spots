@@ -33,10 +33,10 @@ const profileDescription = document.querySelector(".profile__description");
 /*every time we need to use an element we need to select it first*/
 
 const editProfileModal = document.querySelector("#edit-profile-modal");
-const closeButtonModal = editProfileModal.querySelector(".modal__close_button");
+const closeButtonModal = editProfileModal.querySelector(".modal__close-button");
 const inputName = document.querySelector("#profile-name-input");
 const inputDescription = document.querySelector("#profile-description-input");
-const profileFormElement = document.querySelector(".modal__form");
+const profileFormElement = document.forms["modal__form"];
 
 /*if you give an ID to the element then all other searches will be easier*/
 
@@ -78,6 +78,7 @@ function getCardElement(data) {
 
   cardNameEl.textContent = data.name;
   cardImageEl.src = data.link;
+  cardImageEl.alt = data.name;
 
   return cardElement;
 }
