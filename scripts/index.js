@@ -40,25 +40,41 @@ const profileFormElement = document.forms["modal__form"];
 
 /*if you give an ID to the element then all other searches will be easier*/
 
-function openModal() {
+const newPost = document.querySelector(".profile__add-button");
+const newPostModal = document.querySelector("#new-post-modal");
+const newPostCloseButton = newPostModal.querySelector(".modal__close-button");
+
+function openModal(modal) {
+  modal.classList.add("modal_opened");
+}
+
+function closeModal(modal) {
+  modal.classList.remove("modal_opened");
+}
+
+profileEditButton.addEventListener("click", () => {
   inputName.value = profileName.textContent;
   inputDescription.value = profileDescription.textContent;
-  editProfileModal.classList.add("modal_opened");
-}
+  openModal(editProfileModal);
+});
 
-function closeModal() {
-  editProfileModal.classList.remove("modal_opened");
-}
+closeButtonModal.addEventListener("click", () => {
+  closeModal(editProfileModal);
+});
 
-profileEditButton.addEventListener("click", openModal);
-closeButtonModal.addEventListener("click", closeModal);
-/*this looks for a click and then the function describes what happens when it clicks*/
+newPost.addEventListener("click", () => {
+  openModal(newPostModal);
+});
+
+newPostCloseButton.addEventListener("click", () => {
+  closeModal(newPostModal);
+});
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = inputName.value;
   profileDescription.textContent = inputDescription.value;
-  closeModal();
+  closeModal(editProfileModal);
 }
 /*this is grabbing the inputted data and saving it to the field*/
 
