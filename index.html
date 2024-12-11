@@ -56,7 +56,35 @@
             </form>
           </div>
         </div>
+        <div class="modal" id="new-post-modal">
+          <div class="modal__container">
+            <button class="modal__close-button" type="button">
+              <img src="Images/close_icon.svg" alt="close icon" />
+            </button>
+            <h2 class="modal__title">Edit profile</h2>
+            <form class="modal__form" id="modal__form">
+              <label for="profile-name-input" class="modal__label"
+                >Name<input
+                  type="text"
+                  required
+                  class="modal__input"
+                  id="profile-name-input"
+                  placeholder="Type your name"
+              /></label>
 
+              <label for="profile-description-input" class="modal__label"
+                >Description<input
+                  type="text"
+                  required
+                  class="modal__input"
+                  id="profile-description-input"
+                  placeholder="Describe yourself"
+              /></label>
+
+              <button type="submit" class="modal__submit-button">Save</button>
+            </form>
+          </div>
+        </div>
         <div class="profile page__section">
           <img
             src="./Images/avatar.jpg"
