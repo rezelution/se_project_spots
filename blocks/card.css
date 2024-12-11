@@ -25,6 +25,15 @@
   opacity: 100%;
 }
 
+.card__like-button_clicked {
+  background-image: url(../Images/like_button.svg);
+  opacity: 1;
+}
+
+.card__like-button_clicked:hover {
+  background-image: url(../Images/like_button_hover.svg);
+}
+
 .card__content {
   display: flex;
   align-items: center;
