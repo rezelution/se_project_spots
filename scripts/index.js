@@ -36,13 +36,16 @@ const editProfileModal = document.querySelector("#edit-profile-modal");
 const closeButtonModal = editProfileModal.querySelector(".modal__close-button");
 const inputName = document.querySelector("#profile-name-input");
 const inputDescription = document.querySelector("#profile-description-input");
-const profileFormElement = document.forms["modal__form"];
+const profileFormElement = editProfileModal.querySelector(".modal__form");
 
 /*if you give an ID to the element then all other searches will be easier*/
 
-const newPost = document.querySelector(".profile__add-button");
+const newPostButton = document.querySelector(".profile__add-button");
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostCloseButton = newPostModal.querySelector(".modal__close-button");
+const newPostForm = newPostButton.querySelector(".modal__form");
+const newPostLinkInput = document.querySelector("#newPost-link-input");
+const newPostCaptionInput = document.querySelector("#newPost-caption-input");
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
@@ -62,7 +65,7 @@ closeButtonModal.addEventListener("click", () => {
   closeModal(editProfileModal);
 });
 
-newPost.addEventListener("click", () => {
+newPostButton.addEventListener("click", () => {
   openModal(newPostModal);
 });
 
@@ -76,9 +79,22 @@ function handleProfileFormSubmit(evt) {
   profileDescription.textContent = inputDescription.value;
   closeModal(editProfileModal);
 }
+
+function handleNewPostSubmit(evt) {
+  evt.preventDefault();
+  const inputValues = {
+    link: newPostLinkInput.value,
+    name: newPostCaptionInput.value,
+  };
+  const cardEl = getCardElement(inputValues);
+  cardList.prepend(cardEl);
+  closeModal(newPostModal);
+}
 /*this is grabbing the inputted data and saving it to the field*/
 
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
+newPostModal.addEventListener("submit", handleNewPostSubmit);
+
 /*the code is for submit when i hit the save button*/
 
 const cardTemplate = document.querySelector("#card-template");
