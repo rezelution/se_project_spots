@@ -98,6 +98,7 @@ function getCardElement(data) {
 
   return cardElement;
 }
+
 //the above is grabbing from the array and filling the data into the designated template areas
 
 initialCards.forEach((card) => {
