@@ -25,20 +25,16 @@ const initialCards = [
   },
 ];
 
+/*every time we need to use an element we need to select it first*/
 const profileEditButton = document.querySelector(".profile__edit-button");
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
-
-/*this is to select something and if we want something to happen when it get's clicked we need to set an event listener*/
-/*every time we need to use an element we need to select it first*/
 
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const closeButtonModal = editProfileModal.querySelector(".modal__close-button");
 const inputName = document.querySelector("#profile-name-input");
 const inputDescription = document.querySelector("#profile-description-input");
 const profileFormElement = editProfileModal.querySelector(".modal__form");
-
-/*if you give an ID to the element then all other searches will be easier*/
 
 const newPostButton = document.querySelector(".profile__add-button");
 const newPostModal = document.querySelector("#new-post-modal");
@@ -55,6 +51,7 @@ function closeModal(modal) {
   modal.classList.remove("modal_opened");
 }
 
+//this is listening for the click then pulling up the data that's in the input fields
 profileEditButton.addEventListener("click", () => {
   inputName.value = profileName.textContent;
   inputDescription.value = profileDescription.textContent;
@@ -73,6 +70,7 @@ newPostCloseButton.addEventListener("click", () => {
   closeModal(newPostModal);
 });
 
+//this is handling placing all the text into the fields and then it closes when you submit
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = inputName.value;
@@ -80,6 +78,7 @@ function handleProfileFormSubmit(evt) {
   closeModal(editProfileModal);
 }
 
+//this is entering the information/link then adding the image to the front of array(temp)
 function handleNewPostSubmit(evt) {
   evt.preventDefault();
   const inputValues = {
@@ -90,13 +89,12 @@ function handleNewPostSubmit(evt) {
   cardList.prepend(cardEl);
   closeModal(newPostModal);
 }
-/*this is grabbing the inputted data and saving it to the field*/
 
+//these are the event listener for the above functions
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 newPostModal.addEventListener("submit", handleNewPostSubmit);
 
-/*the code is for submit when i hit the save button*/
-
+//this is identifying what the actual card is and below are the fields and how they will be populated
 const cardTemplate = document.querySelector("#card-template");
 const cardList = document.querySelector(".cards__list");
 
@@ -108,6 +106,7 @@ function getCardElement(data) {
   const cardNameEl = cardElement.querySelector(".card__title");
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardLikeButton = cardElement.querySelector(".card__like-button");
+  const cardDeleteButton = cardElement.querySelector(".card__delete-button");
 
   cardNameEl.textContent = data.name;
   cardImageEl.src = data.link;
@@ -117,14 +116,15 @@ function getCardElement(data) {
     cardLikeButton.classList.toggle("card__like-button_clicked");
   });
 
+  //this deletes the card, the closest goes to the nearest parent
+  cardDeleteButton.addEventListener("click", () => {
+    cardDeleteButton.closest(".card").remove();
+  });
+
   return cardElement;
 }
-
-//the above is grabbing from the array and filling the data into the designated template areas
 
 initialCards.forEach((card) => {
   const cardElement = getCardElement(card);
   cardList.append(cardElement);
 });
-//the for loop is taking each image in array and listing one by one.
-//The append starts at the end, the prepend starts at the front

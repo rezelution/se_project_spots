@@ -34,6 +34,21 @@
   background-image: url(../Images/like_button_hover.svg);
 }
 
+.card__delete-button {
+  background-image: url(../Images/delete_button.svg);
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  margin-left: 371px;
+  margin-top: 10px;
+  border: none;
+  background-color: transparent;
+}
+
+.card__delete-button:hover {
+  background-image: url(../Images/delete_button_hover.svg);
+}
+
 .card__content {
   display: flex;
   align-items: center;
