@@ -23,6 +23,10 @@ const initialCards = [
     name: "Mountain house",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
   },
+  {
+    name: "Golden Gate Bridge",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
+  },
 ];
 
 /*every time we need to use an element we need to select it first*/
@@ -42,6 +46,13 @@ const newPostCloseButton = newPostModal.querySelector(".modal__close-button");
 const newPostForm = newPostButton.querySelector(".modal__form");
 const newPostLinkInput = document.querySelector("#newPost-link-input");
 const newPostCaptionInput = document.querySelector("#newPost-caption-input");
+
+const previewModal = document.querySelector("#preview-modal");
+const previewModalImageEl = previewModal.querySelector(".modal__image");
+const previewModalCaption = previewModal.querySelector(".modal__caption");
+const previewModalCloseButton = previewModal.querySelector(
+  ".modal__close-button_preview"
+);
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
@@ -68,6 +79,10 @@ newPostButton.addEventListener("click", () => {
 
 newPostCloseButton.addEventListener("click", () => {
   closeModal(newPostModal);
+});
+
+previewModalCloseButton.addEventListener("click", () => {
+  closeModal(previewModal);
 });
 
 //this is handling placing all the text into the fields and then it closes when you submit
@@ -119,6 +134,14 @@ function getCardElement(data) {
   //this deletes the card, the closest goes to the nearest parent
   cardDeleteButton.addEventListener("click", () => {
     cardDeleteButton.closest(".card").remove();
+  });
+
+  //for image preview modal .card__image
+  cardImageEl.addEventListener("click", () => {
+    openModal(previewModal);
+    previewModalCaption.textContent = data.name;
+    previewModalImageEl.src = data.link;
+    previewModalCaption.alt = data.name;
   });
 
   return cardElement;
