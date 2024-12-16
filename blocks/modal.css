@@ -129,8 +129,6 @@
   border-radius: 8px;
   color: #fcf5e5;
   cursor: pointer;
-  border-color: none;
-  border-style: none;
 }
 
 @media screen and (max-width: 740px) {

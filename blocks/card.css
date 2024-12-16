@@ -10,6 +10,7 @@
   object-fit: cover;
   display: block;
   position: relative;
+  cursor: pointer;
 }
 
 .card__like-button {
@@ -48,6 +49,7 @@
   top: 10px;
   border: none;
   background-color: transparent;
+  cursor: pointer;
 }
 
 .card__delete-button:hover {
