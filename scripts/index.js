@@ -30,6 +30,7 @@ const initialCards = [
 ];
 
 /*every time we need to use an element we need to select it first*/
+//below selects the edit profile and modal
 const profileEditButton = document.querySelector(".profile__edit-button");
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
@@ -40,6 +41,7 @@ const inputName = document.querySelector("#profile-name-input");
 const inputDescription = document.querySelector("#profile-description-input");
 const profileFormElement = editProfileModal.querySelector(".modal__form");
 
+//below selects the new post and modal
 const newPostButton = document.querySelector(".profile__add-button");
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostCloseButton = newPostModal.querySelector(".modal__close-button");
@@ -47,6 +49,7 @@ const newPostForm = newPostButton.querySelector(".modal__form");
 const newPostLinkInput = document.querySelector("#newPost-link-input");
 const newPostCaptionInput = document.querySelector("#newPost-caption-input");
 
+//below selects the preview larger image modal
 const previewModal = document.querySelector("#preview-modal");
 const previewModalImageEl = previewModal.querySelector(".modal__image");
 const previewModalCaption = previewModal.querySelector(".modal__caption");
@@ -54,6 +57,7 @@ const previewModalCloseButton = previewModal.querySelector(
   ".modal__close-button_preview"
 );
 
+//these are the universal functions for opening and closing the modals
 function openModal(modal) {
   modal.classList.add("modal_opened");
 }
@@ -69,6 +73,7 @@ profileEditButton.addEventListener("click", () => {
   openModal(editProfileModal);
 });
 
+//these are just for opening and closing for the buttons
 closeButtonModal.addEventListener("click", () => {
   closeModal(editProfileModal);
 });

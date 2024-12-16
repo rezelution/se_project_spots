@@ -29,9 +29,7 @@
       <main class="content">
         <div class="modal" id="edit-profile-modal">
           <div class="modal__container">
-            <button class="modal__close-button" type="button">
-              <img src="Images/close_icon.svg" alt="close icon" />
-            </button>
+            <button class="modal__close-button" type="button"></button>
             <h2 class="modal__title">Edit profile</h2>
             <form class="modal__form" id="modal__form">
               <label for="profile-name-input" class="modal__label"
@@ -58,9 +56,7 @@
         </div>
         <div class="modal" id="new-post-modal">
           <div class="modal__container">
-            <button class="modal__close-button" type="button">
-              <img src="Images/close_icon.svg" alt="close icon" />
-            </button>
+            <button class="modal__close-button" type="button"></button>
             <h2 class="modal__title">New post</h2>
             <form class="modal__form" id="newPost-form">
               <label for="newPost-link-input" class="modal__label"
@@ -85,7 +81,7 @@
             </form>
           </div>
         </div>
-        <div class="modal" id="preview-modal">
+        <div class="modal modal_preview" id="preview-modal">
           <div class="modal__container modal__container_preview">
             <button
               class="modal__close-button modal__close-button_preview"
@@ -116,11 +112,11 @@
           <ul class="cards__list">
             <template id="card-template">
               <li class="card">
-                <button type="button" class="card__delete-button"></button>
                 <img class="card__image" src="" alt="" />
                 <div class="card__content">
                   <h2 class="card__title"></h2>
                   <button type="button" class="card__like-button"></button>
+                  <button type="button" class="card__delete-button"></button>
                 </div></li
             ></template>
           </ul>
