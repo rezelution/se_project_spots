@@ -36,16 +36,16 @@ const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
 
 const editProfileModal = document.querySelector("#edit-profile-modal");
-const closeButtonModal = editProfileModal.querySelector(".modal__close-button");
 const inputName = document.querySelector("#profile-name-input");
 const inputDescription = document.querySelector("#profile-description-input");
 const profileFormElement = editProfileModal.querySelector(".modal__form");
+const profileForm = document.forms["profile-form"];
 
 //below selects the new post and modal
 const newPostButton = document.querySelector(".profile__add-button");
 const newPostModal = document.querySelector("#new-post-modal");
-const newPostCloseButton = newPostModal.querySelector(".modal__close-button");
-const newPostForm = newPostButton.querySelector(".modal__form");
+const newPostForm = document.forms["newPost-form"];
+
 const newPostLinkInput = document.querySelector("#newPost-link-input");
 const newPostCaptionInput = document.querySelector("#newPost-caption-input");
 
@@ -53,9 +53,9 @@ const newPostCaptionInput = document.querySelector("#newPost-caption-input");
 const previewModal = document.querySelector("#preview-modal");
 const previewModalImageEl = previewModal.querySelector(".modal__image");
 const previewModalCaption = previewModal.querySelector(".modal__caption");
-const previewModalCloseButton = previewModal.querySelector(
-  ".modal__close-button_preview"
-);
+
+//selects all close buttons on modals
+const closeButtons = document.querySelectorAll(".modal__close");
 
 //these are the universal functions for opening and closing the modals
 function openModal(modal) {
@@ -74,20 +74,15 @@ profileEditButton.addEventListener("click", () => {
 });
 
 //these are just for opening and closing for the buttons
-closeButtonModal.addEventListener("click", () => {
-  closeModal(editProfileModal);
-});
-
 newPostButton.addEventListener("click", () => {
   openModal(newPostModal);
 });
 
-newPostCloseButton.addEventListener("click", () => {
-  closeModal(newPostModal);
-});
+//This is universal close button handler
+closeButtons.forEach((button) => {
+  const modal = button.closest(".modal");
 
-previewModalCloseButton.addEventListener("click", () => {
-  closeModal(previewModal);
+  button.addEventListener("click", () => closeModal(modal));
 });
 
 //this is handling placing all the text into the fields and then it closes when you submit
@@ -105,14 +100,14 @@ function handleNewPostSubmit(evt) {
     link: newPostLinkInput.value,
     name: newPostCaptionInput.value,
   };
-  const cardEl = getCardElement(inputValues);
-  cardList.prepend(cardEl);
+  renderCard(inputValues, "prepend"); // Prepend the new card
+  evt.target.reset();
   closeModal(newPostModal);
 }
 
 //these are the event listener for the above functions
-profileFormElement.addEventListener("submit", handleProfileFormSubmit);
-newPostModal.addEventListener("submit", handleNewPostSubmit);
+profileForm.addEventListener("submit", handleProfileFormSubmit);
+newPostForm.addEventListener("submit", handleNewPostSubmit);
 
 //this is identifying what the actual card is and below are the fields and how they will be populated
 const cardTemplate = document.querySelector("#card-template");
@@ -138,7 +133,7 @@ function getCardElement(data) {
 
   //this deletes the card, the closest goes to the nearest parent
   cardDeleteButton.addEventListener("click", () => {
-    cardDeleteButton.closest(".card").remove();
+    cardElement.remove();
   });
 
   //for image preview modal .card__image
@@ -152,7 +147,11 @@ function getCardElement(data) {
   return cardElement;
 }
 
+function renderCard(item, method = "append") {
+  const cardElement = getCardElement(item);
+  cardList[method](cardElement);
+}
+
 initialCards.forEach((card) => {
-  const cardElement = getCardElement(card);
-  cardList.append(cardElement);
+  renderCard(card);
 });
