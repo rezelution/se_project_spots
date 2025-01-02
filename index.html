@@ -29,7 +29,10 @@
       <main class="content">
         <div class="modal" id="edit-profile-modal">
           <div class="modal__container">
-            <button class="modal__close-button modal__close" type="button"></button>
+            <button
+              class="modal__close-button modal__close"
+              type="button"
+            ></button>
             <h2 class="modal__title">Edit profile</h2>
             <form class="modal__form" id="profile-form">
               <label for="profile-name-input" class="modal__label"
@@ -39,6 +42,8 @@
                   class="modal__input"
                   id="profile-name-input"
                   placeholder="Type your name"
+                  minlength="2"
+                  maxlength="40"
               /></label>
 
               <label for="profile-description-input" class="modal__label"
@@ -48,6 +53,8 @@
                   class="modal__input"
                   id="profile-description-input"
                   placeholder="Describe yourself"
+                  minlength="2"
+                  maxlength="200"
               /></label>
 
               <button type="submit" class="modal__submit-button">Save</button>
@@ -56,7 +63,10 @@
         </div>
         <div class="modal" id="new-post-modal">
           <div class="modal__container">
-            <button class="modal__close-button modal__close" type="button"></button>
+            <button
+              class="modal__close-button modal__close"
+              type="button"
+            ></button>
             <h2 class="modal__title">New post</h2>
             <form class="modal__form" id="newPost-form">
               <label for="newPost-link-input" class="modal__label"
@@ -75,6 +85,8 @@
                   class="modal__input"
                   id="newPost-caption-input"
                   placeholder="Type your caption"
+                  minlength="2"
+                  maxlength="30"
               /></label>
 
               <button type="submit" class="modal__submit-button">Save</button>
