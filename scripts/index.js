@@ -62,10 +62,14 @@ const closeButtons = document.querySelectorAll(".modal__close");
 //these are the universal functions for opening and closing the modals
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  //below adds the listener when window is open
+  document.addEventListener("keydown", closeModalOnEscape);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  //below removes the listener when window is closed
+  document.removeEventListener("keydown", closeModalOnEscape);
 }
 
 //this is listening for the click then pulling up the data that's in the input fields
@@ -81,7 +85,35 @@ newPostButton.addEventListener("click", () => {
   openModal(newPostModal);
 });
 
+// Universal function to close the modal when clicking outside the modal content
+function closeModalOnOutsideClick(modal) {
+  modal.addEventListener("click", (evt) => {
+    // Checks if the click was outside the modal content
+    if (evt.target === modal) {
+      closeModal(modal);
+    }
+  });
+}
 
+// Add close on outside click for each modal
+const modals = document.querySelectorAll(".modal");
+modals.forEach((modal) => {
+  closeModalOnOutsideClick(modal);
+});
+
+// Function to close modal when Escape key is pressed
+function closeModalOnEscape(evt) {
+  if (evt.key === "Escape") {
+    // Find the currently open modal
+    const openModal = document.querySelector(".modal_opened");
+    if (openModal) {
+      closeModal(openModal);
+    }
+  }
+}
+
+// Attach the keydown event listener to the document to listen for Escape key press
+document.addEventListener("keydown", closeModalOnEscape);
 
 //This is universal close button handler
 closeButtons.forEach((button) => {
