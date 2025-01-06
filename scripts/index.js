@@ -118,7 +118,6 @@ document.addEventListener("keydown", closeModalOnEscape);
 //This is universal close button handler
 closeButtons.forEach((button) => {
   const modal = button.closest(".modal");
-
   button.addEventListener("click", () => closeModal(modal));
 });
 
