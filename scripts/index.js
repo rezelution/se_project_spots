@@ -46,6 +46,8 @@ const newPostButton = document.querySelector(".profile__add-button");
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostForm = document.forms["newPost-form"];
 
+const cardSubmitButton = newPostModal.querySelector(".modal__submit_button");
+
 const newPostLinkInput = document.querySelector("#newPost-link-input");
 const newPostCaptionInput = document.querySelector("#newPost-caption-input");
 
@@ -70,6 +72,7 @@ function closeModal(modal) {
 profileEditButton.addEventListener("click", () => {
   inputName.value = profileName.textContent;
   inputDescription.value = profileDescription.textContent;
+  resetValidation(editProfileModal, [inputName, inputDescription]);
   openModal(editProfileModal);
 });
 
@@ -77,6 +80,8 @@ profileEditButton.addEventListener("click", () => {
 newPostButton.addEventListener("click", () => {
   openModal(newPostModal);
 });
+
+
 
 //This is universal close button handler
 closeButtons.forEach((button) => {
@@ -102,6 +107,7 @@ function handleNewPostSubmit(evt) {
   };
   renderCard(inputValues, "prepend"); // Prepend the new card
   evt.target.reset();
+  disableButton(cardSubmitButton, settings);
   closeModal(newPostModal);
 }
 

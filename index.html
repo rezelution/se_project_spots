@@ -30,11 +30,11 @@
         <div class="modal" id="edit-profile-modal">
           <div class="modal__container">
             <button
-              class="modal__close-button modal__close"
+              class="modal__close_button modal__close"
               type="button"
             ></button>
             <h2 class="modal__title">Edit profile</h2>
-            <form class="modal__form" id="profile-form">
+            <form class="modal__form" id="profile-form" novalidate>
               <label for="profile-name-input" class="modal__label"
                 >Name<input
                   type="text"
@@ -43,8 +43,11 @@
                   id="profile-name-input"
                   placeholder="Type your name"
                   minlength="2"
-                  maxlength="40"
-              /></label>
+                  maxlength="40" /><span
+                  id="profile-name-input-error"
+                  class="modal__error"
+                ></span
+              ></label>
 
               <label for="profile-description-input" class="modal__label"
                 >Description<input
@@ -54,29 +57,35 @@
                   id="profile-description-input"
                   placeholder="Describe yourself"
                   minlength="2"
-                  maxlength="200"
-              /></label>
+                  maxlength="200" /><span
+                  id="profile-description-input-error"
+                  class="modal__error"
+                ></span
+              ></label>
 
-              <button type="submit" class="modal__submit-button">Save</button>
+              <button type="submit" class="modal__submit_button">Save</button>
             </form>
           </div>
         </div>
         <div class="modal" id="new-post-modal">
           <div class="modal__container">
             <button
-              class="modal__close-button modal__close"
+              class="modal__close_button modal__close"
               type="button"
             ></button>
             <h2 class="modal__title">New post</h2>
-            <form class="modal__form" id="newPost-form">
+            <form class="modal__form" id="newPost-form" novalidate>
               <label for="newPost-link-input" class="modal__label"
                 >Image Link<input
                   type="url"
                   required
                   class="modal__input"
                   id="newPost-link-input"
-                  placeholder="Paste a link to the picture"
-              /></label>
+                  placeholder="Paste a link to the picture" /><span
+                  id="newPost-link-input-error"
+                  class="modal__error"
+                ></span
+              ></label>
 
               <label for="newPost-caption-input" class="modal__label"
                 >Caption<input
@@ -86,17 +95,20 @@
                   id="newPost-caption-input"
                   placeholder="Type your caption"
                   minlength="2"
-                  maxlength="30"
-              /></label>
+                  maxlength="30" /><span
+                  id="newPost-caption-input-error"
+                  class="modal__error"
+                ></span
+              ></label>
 
-              <button type="submit" class="modal__submit-button">Save</button>
+              <button type="submit" class="modal__submit_button">Save</button>
             </form>
           </div>
         </div>
         <div class="modal modal_preview" id="preview-modal">
           <div class="modal__container modal__container_preview">
             <button
-              class="modal__close-button modal__close-button_preview modal__close"
+              class="modal__close_button modal__close_button_preview modal__close"
               type="button"
             ></button>
             <img class="modal__image" src="" alt="" />
@@ -138,6 +150,7 @@
     <footer class="footer">
       <p class="footer__copyright">2023 © Spots</p>
     </footer>
+    <script defer src="./scripts/validation.js"></script>
     <script defer src="./scripts/index.js"></script>
   </body>
 </html>
