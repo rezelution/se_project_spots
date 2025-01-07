@@ -46,7 +46,7 @@ const newPostButton = document.querySelector(".profile__add-button");
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostForm = document.forms["newPost-form"];
 
-const cardSubmitButton = newPostModal.querySelector(".modal__submit_button");
+const cardSubmitButton = newPostModal.querySelector(".modal__submit-button");
 
 const newPostLinkInput = document.querySelector("#newPost-link-input");
 const newPostCaptionInput = document.querySelector("#newPost-caption-input");
@@ -76,7 +76,7 @@ function closeModal(modal) {
 profileEditButton.addEventListener("click", () => {
   inputName.value = profileName.textContent;
   inputDescription.value = profileDescription.textContent;
-  resetValidation(editProfileModal, [inputName, inputDescription]);
+  resetValidation(editProfileModal, [inputName, inputDescription], settings);
   openModal(editProfileModal);
 });
 
@@ -111,9 +111,6 @@ function closeModalOnEscape(evt) {
     }
   }
 }
-
-// Attach the keydown event listener to the document to listen for Escape key press
-document.addEventListener("keydown", closeModalOnEscape);
 
 //This is universal close button handler
 closeButtons.forEach((button) => {

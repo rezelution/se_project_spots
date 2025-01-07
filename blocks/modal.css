@@ -131,7 +131,7 @@
   color: #ff000099;
 }
 
-.modal__submit_button {
+.modal__submit-button {
   width: 156px;
   padding: 18px 0;
   background-color: #000;
@@ -141,12 +141,12 @@
   border-style: none;
 }
 
-.modal__submit_button:hover {
+.modal__submit-button:hover {
   background-color: #212121cc;
   border-style: none;
 }
 
-.modal__submit_button_inactive {
+.modal__submit-button_inactive {
   background-color: #21212180;
   border-style: none;
 }
@@ -208,7 +208,7 @@
     line-height: 1;
   }
 
-  .modal__submit_button {
+  .modal__submit-button {
     width: 276px;
   }
 }
