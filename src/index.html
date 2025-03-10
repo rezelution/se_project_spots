@@ -14,14 +14,13 @@
       content="Spots, interactive, social media, web application, add, remove, photos, like, users"
     />
     <meta name="author" content="Alexander Reznik" />
-    <link rel="stylesheet" href="./pages/index.css" />
     <link rel="arrow icon" href="./favicon.ico" />
   </head>
   <body>
     <div class="page">
       <header class="header">
         <img
-          src="./Images/spots_logo_black.svg"
+          id="spots-logo-black"
           alt="Spots Logo Black"
           class="header__logo"
         />
@@ -116,11 +115,8 @@
           </div>
         </div>
         <div class="profile page__section">
-          <img
-            src="./Images/avatar.jpg"
-            alt="Bessie Coleman"
-            class="profile__avatar"
-          />
+          <img src="<%=require("./Images/avatar.jpg")%>" alt="Bessie Coleman"
+          class="profile__avatar" />
           <div class="profile__column">
             <h1 class="profile__name">Bessie Coleman</h1>
             <p class="profile__description">Civil Aviator</p>
@@ -150,7 +146,6 @@
     <footer class="footer">
       <p class="footer__copyright">2023 © Spots</p>
     </footer>
-    <script defer src="./scripts/validation.js"></script>
-    <script defer src="./scripts/index.js"></script>
+    <!-- <script type="module" src="./scripts/index.js"></script> -->
   </body>
 </html>

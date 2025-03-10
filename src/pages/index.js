@@ -1,3 +1,16 @@
+import {
+  enableValidation,
+  settings,
+  resetValidation,
+  disableButton,
+} from "../scripts/validation.js";
+import "./index.css";
+
+import spotsLogoBlack from "../Images/spots_logo_black.svg";
+
+const spots_logo_black = document.getElementById("spots-logo-black");
+spots_logo_black.src = spotsLogoBlack;
+
 const initialCards = [
   {
     name: "Val Thorens",
@@ -189,3 +202,5 @@ function renderCard(item, method = "append") {
 initialCards.forEach((card) => {
   renderCard(card);
 });
+
+enableValidation(settings);
