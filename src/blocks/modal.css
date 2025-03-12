@@ -5,7 +5,7 @@
   left: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -63,6 +63,71 @@
   font-size: 32px;
   line-height: 1;
   margin: 0 0 32px;
+}
+
+.modal__delete-title {
+  font-size: 24px;
+  line-height: 1;
+  margin: 0 0 32px;
+}
+
+.modal__delete-container {
+  box-sizing: border-box;
+  max-width: 630px;
+  padding: 32px 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal__delete-container .modal__close_button {
+  background-image: url(../Images/close_button_darkbkgd.svg);
+  top: 0;
+  right: -55px;
+  opacity: 100%;
+}
+
+.modal__delete-cancel-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.modal__delete-button {
+  width: 156px;
+  padding: 18px 0;
+  background-color: #ff6565;
+  border-radius: 8px;
+  color: #000;
+  cursor: pointer;
+  border-style: none;
+}
+
+.modal__delete-button:hover {
+  background-color: #ff3333;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.modal__cancel-button {
+  width: 156px;
+  padding: 18px 0;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid black;
+  color: #000;
+  cursor: pointer;
+}
+
+.modal__cancel-button:hover {
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .modal__close_button {
@@ -160,6 +225,7 @@
 @media screen and (max-width: 426px) {
   .modal {
     padding: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
   }
 
   .modal_preview {
@@ -210,5 +276,28 @@
 
   .modal__submit-button {
     width: 276px;
+  }
+
+  .modal__delete-title {
+    font-size: 20px;
+    margin: 0 0 20px;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .modal__delete-container {
+    max-width: 300px;
+    padding: 12px;
+  }
+
+  .modal__delete-container .modal__close_button {
+    top: -50px;
+    right: 0;
+  }
+
+  .modal__delete-cancel-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
 }
