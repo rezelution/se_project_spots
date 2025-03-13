@@ -7,7 +7,7 @@ import {
 import "./index.css";
 import spotsLogoBlack from "../Images/spots_logo_black.svg";
 import Api from "../utils/Api.js";
-import { setButtonText } from "../utils/helpers.js";
+import { setButtonText, handleSubmit } from "../utils/helpers.js";
 
 let userId;
 let selectedCard;
@@ -37,6 +37,7 @@ const profileFormElement = editProfileModal.querySelector(".modal__form");
 const profileForm = document.forms["profile-form"];
 const profileAvatarModal = document.querySelector("#edit-avatar-modal");
 const avatarForm = document.forms["avatar-form"];
+const avatarInput = document.querySelector("#profile-picture-input"); // Get the input element
 
 //below selects the new post and modal
 const newPostButton = document.querySelector(".profile__add-button");
@@ -65,8 +66,7 @@ const cardList = document.querySelector(".cards__list");
 const deleteCardSubmit = deletePostModal.querySelector(".modal__delete-button");
 const deleteCardCancel = deletePostModal.querySelector(".modal__cancel-button");
 
-const spots_logo_black = document.getElementById("spots-logo-black");
-spots_logo_black.src = spotsLogoBlack;
+document.getElementById("spots-logo-black").src = spotsLogoBlack;
 
 // Add close on outside click for each modal
 modals.forEach((modal) => {
@@ -158,44 +158,32 @@ function renderCard(item, method = "append") {
 }
 
 function handleAvatarFormSubmit(evt) {
-  evt.preventDefault();
-  const avatarInput = document.querySelector("#profile-picture-input"); // Get the input element
-  const submitBtn = evt.submitter;
-  setButtonText(submitBtn, true);
-  api
-    .editAvatar({ avatar: avatarInput.value })
-    .then((data) => {
+  function makeRequest() {
+    return api.editAvatar({ avatar: avatarInput.value }).then((data) => {
       profileAvatar.src = data.avatar;
       profileAvatar.alt = data.name;
       closeModal(profileAvatarModal);
-    })
-    .catch(console.error)
-    .finally(() => {
-      setButtonText(submitBtn, false);
     });
+  }
+
+  handleSubmit(makeRequest, evt, "Saving...");
 }
 
-//this is entering the information/link then adding the image to the front of array(temp)
 function handleNewPostSubmit(evt) {
-  evt.preventDefault();
-  const inputValues = {
-    link: newPostLinkInput.value,
-    name: newPostCaptionInput.value,
-  };
-  const submitBtn = evt.submitter;
-  setButtonText(submitBtn, true);
-  api
-    .newCardPost(inputValues)
-    .then((data) => {
-      renderCard(data, "append");
-      evt.target.reset();
-      disableButton(cardSubmitButton, settings);
-      closeModal(newPostModal);
-    })
-    .catch(console.error)
-    .finally(() => {
-      setButtonText(submitBtn, false);
-    });
+  function makeRequest() {
+    return api
+      .newCardPost({
+        link: newPostLinkInput.value,
+        name: newPostCaptionInput.value,
+      })
+      .then((data) => {
+        renderCard(data, "prepend");
+        disableButton(cardSubmitButton, settings);
+        closeModal(newPostModal);
+      });
+  }
+
+  handleSubmit(makeRequest, evt, "Saving...");
 }
 
 function handleLike(evt, cardId) {
@@ -214,30 +202,23 @@ function handleLike(evt, cardId) {
     .catch(console.error);
 }
 
-//this is handling placing all the text into the fields and then it closes when you submit
 function handleProfileFormSubmit(evt) {
-  evt.preventDefault();
-
-  //the evt target "submitter" targets the submit button based on it being clicked
-  const submitBtn = evt.submitter;
-  setButtonText(submitBtn, true);
-
-  api
-    .editUserInfo({ name: inputName.value, about: inputDescription.value })
-    .then((data) => {
-      profileName.textContent = data.name;
-      profileDescription.textContent = data.about;
-      closeModal(editProfileModal);
-    })
-    .catch(console.error)
-    .finally(() => {
-      setButtonText(submitBtn, false);
-    });
+  function makeRequest() {
+    return api
+      .editUserInfo({ name: inputName.value, about: inputDescription.value })
+      .then((userData) => {
+        profileName.textContent = userData.name;
+        profileDescription.textContent = userData.about;
+        closeModal(editProfileModal);
+      });
+  }
+  handleSubmit(makeRequest, evt, "Saving...");
 }
 
 function handleDeleteCard(cardElement, data) {
   selectedCard = cardElement;
   selectedCardId = data._id;
+  console.log("Selected Card ID:", selectedCardId);
   openModal(deletePostModal);
 }
 
@@ -280,6 +261,7 @@ newPostForm.addEventListener("submit", handleNewPostSubmit);
 avatarForm.addEventListener("submit", handleAvatarFormSubmit);
 
 deleteCardSubmit.addEventListener("click", handleDeleteSubmit);
+
 deleteCardCancel.addEventListener("click", () => closeModal(deletePostModal));
 
 api
